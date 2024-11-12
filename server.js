@@ -23,7 +23,7 @@ function displayLobby() {
   console.log(line);
 
   // 게임 이름
-  console.log(chalk.yellowBright.bold('북극곰의 여행 게임에 오신것을 환영합니다!'));
+  console.log(chalk.yellowBright.bold('북극곰 여행 게임에 오신것을 환영합니다!'));
 
   // 설명 텍스트
   console.log(chalk.green('옵션을 선택해주세요.'));
@@ -73,12 +73,6 @@ function handleUserInput() {
   }
 }
 
-// 게임 시작 함수
-function start() {
-  displayLobby();
-  handleUserInput();
-}
-
 // 아이템 클래스 - 플레이어가 이벤트에서 획득할 수 있는 아이템을 생성
 class Item {
   constructor(name, type, effect) {
@@ -88,7 +82,7 @@ class Item {
   }
 }
 
-// 아이템 목록 생성 함수
+// 아이템 목록 생성 함수 - 어떻게 쓸 지 생각하기
 export function generateRandomItem() {
   const items = [
     new Item('라이터', 'utility', { stat: 'hp', amount: 5 }),
@@ -116,6 +110,12 @@ export function getRandomInt(max) {
 // 콘솔에 메시지 표시 유틸리티
 export function logMessage(message, color = 'white') {
   console.log(chalk[color](message));
+}
+
+// 게임 시작 함수
+function start() {
+  displayLobby();
+  handleUserInput();
 }
 
 // 게임 실행
