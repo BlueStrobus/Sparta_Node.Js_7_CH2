@@ -10,7 +10,7 @@ function displayLobby() {
   // 타이틀 텍스트
   console.log(
     chalk.cyan(
-      figlet.textSync('RL- Javascript', {
+      figlet.textSync("Polar Bear's Journey", {
         font: 'Standard',
         horizontalLayout: 'default',
         verticalLayout: 'default',
@@ -23,7 +23,7 @@ function displayLobby() {
   console.log(line);
 
   // 게임 이름
-  console.log(chalk.yellowBright.bold('CLI 게임에 오신것을 환영합니다!'));
+  console.log(chalk.yellowBright.bold('북극곰의 여행 게임에 오신것을 환영합니다!'));
 
   // 설명 텍스트
   console.log(chalk.green('옵션을 선택해주세요.'));
@@ -77,6 +77,45 @@ function handleUserInput() {
 function start() {
   displayLobby();
   handleUserInput();
+}
+
+// 아이템 클래스 - 플레이어가 이벤트에서 획득할 수 있는 아이템을 생성
+class Item {
+  constructor(name, type, effect) {
+    this.name = name;
+    this.type = type;
+    this.effect = effect;
+  }
+}
+
+// 아이템 목록 생성 함수
+export function generateRandomItem() {
+  const items = [
+    new Item('라이터', 'utility', { stat: 'hp', amount: 5 }),
+    new Item('라면', 'food', { stat: 'fullness', amount: 20 }),
+    new Item('응급처치 키트', 'healing', { stat: 'hp', amount: 30 }),
+  ];
+
+  return items[Math.floor(Math.random() * items.length)];
+}
+
+// 플레이어 상태를 콘솔에 보기 좋게 표시하는 함수
+export function displayPlayerStatus(player) {
+  console.log(chalk.magentaBright(`\n===== 플레이어 상태 =====`));
+  console.log(chalk.cyanBright(`체력: ${player.hp}`));
+  console.log(chalk.yellowBright(`포만감: ${player.fullness}`));
+  console.log(chalk.greenBright(`행복: ${player.happiness}`));
+  console.log(chalk.magentaBright(`========================\n`));
+}
+
+// 무작위 수 생성 함수 (이벤트 발생 확률 등)
+export function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+// 콘솔에 메시지 표시 유틸리티
+export function logMessage(message, color = 'white') {
+  console.log(chalk[color](message));
 }
 
 // 게임 실행
