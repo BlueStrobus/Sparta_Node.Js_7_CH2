@@ -1,7 +1,8 @@
 {
-  "name": "rogueliketext",
+  "name": "ch2",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -9,13 +10,9 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "type": "module",
   "dependencies": {
     "chalk": "^5.3.0",
     "figlet": "^1.8.0",
     "readline-sync": "^1.4.10"
-  },
-  "devDependencies": {
-    "prettier": "^3.3.3"
   }
 }
